@@ -1,31 +1,37 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 
-describe('AppComponent', () => {
+let fixture: any, app: AppComponent, vDOM: HTMLElement;
+
+describe('class AppComponent{}', () => {
   beforeEach(async () => {
+    // compile Component
     await TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
-      ],
+      imports: [],
+      declarations: [AppComponent],
     }).compileComponents();
+
+    // create Instance
+    fixture = TestBed.createComponent(AppComponent); // simulate Class
+    app = fixture.componentInstance; // AppComponent TS
+    vDOM = fixture.nativeElement; // AppComponent HTML
+
+    // afterViewInit()
+    fixture.detectChanges();
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
+  it('Should create the app', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'jest-angular'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('jest-angular');
+  it(`App have as title 'JEST running on Angular'`, () => {
+    expect(app.title).toEqual('JEST running on Angular');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
+  it('HTML renders title', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('jest-angular app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain(
+      'JEST running on Angular, fuck yeah!'
+    );
   });
 });
