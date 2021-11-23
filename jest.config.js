@@ -14,5 +14,5 @@ module.exports = {
   // jest.config.js
   preset: "jest-preset-angular",
   setupFilesAfterEnv: ["<rootDir>/setup-jest.ts"],
-  "test:ci": "jest --runInBand",
+  // "test:ci": "jest --runInBand",
 };

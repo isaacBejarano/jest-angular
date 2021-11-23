@@ -3,22 +3,23 @@ import { AppComponent } from './app.component';
 
 let fixture: any, app: AppComponent, vDOM: HTMLElement;
 
+beforeEach(async () => {
+  // compile Component
+  await TestBed.configureTestingModule({
+    imports: [],
+    declarations: [AppComponent],
+  }).compileComponents();
+
+  // create Instance
+  fixture = TestBed.createComponent(AppComponent); // simulate Class
+  app = fixture.componentInstance; // AppComponent TS
+  vDOM = fixture.nativeElement; // AppComponent HTML
+
+  // afterViewInit()
+  fixture.detectChanges();
+});
+
 describe('class AppComponent{}', () => {
-  beforeEach(async () => {
-    // compile Component
-    await TestBed.configureTestingModule({
-      imports: [],
-      declarations: [AppComponent],
-    }).compileComponents();
-
-    // create Instance
-    fixture = TestBed.createComponent(AppComponent); // simulate Class
-    app = fixture.componentInstance; // AppComponent TS
-    vDOM = fixture.nativeElement; // AppComponent HTML
-
-    // afterViewInit()
-    fixture.detectChanges();
-  });
 
   it('Should create the app', () => {
     expect(app).toBeTruthy();
