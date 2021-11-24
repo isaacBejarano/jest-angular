@@ -15,7 +15,9 @@ xdescribe('JEST can assert Numbers', () => {
     expect(coherced).toEqual(expect.any(String)); // ~ toBe('50');
     expect(+coherced).toEqual(expect.any(Number)); // ~ toBe(50);
   });
+});
 
+xdescribe('JEST can assert NaN', () => {
   it('assert NaN', () => {
     expect(text).toBeNaN; // ~ .not.toEqual(expect.any(Number))
   });

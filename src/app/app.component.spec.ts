@@ -3,7 +3,7 @@ import { AppComponent } from './app.component';
 
 let fixture: any, app: AppComponent, DOM: HTMLElement;
 
-describe('class AppComponent{}', () => {
+xdescribe('class AppComponent{}', () => {
   beforeEach(async () => {
     // compile Component
     await TestBed.configureTestingModule({
@@ -24,13 +24,18 @@ describe('class AppComponent{}', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`App have as title 'JEST running on Angular'`, () => {
+  fit(`App have as title 'JEST running on Angular'`, () => {
     expect(app.title).toEqual('JEST running on Angular');
   });
 
-  it.only('HTML renders title', () => {
+  it('HTML renders title', () => {
     expect(DOM.querySelector('.content span')?.textContent).toContain(
       'JEST running on Angular, fuck yeah!'
     );
   });
 });
+
+// fdescribe ~ describe.only()
+// xdescribe ~ describe.sikp()
+// fit ~ it.only()
+// xit ~ it.skip()
