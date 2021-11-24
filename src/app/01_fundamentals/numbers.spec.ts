@@ -1,4 +1,4 @@
-import { integer, float, coherced, text } from './numbers';
+import { integer, float, coerced, text } from './numbers';
 
 xdescribe('JEST can assert Numbers', () => {
   it('assert Integers', () => {
@@ -12,8 +12,8 @@ xdescribe('JEST can assert Numbers', () => {
   });
 
   it('assert coherced Numbers', () => {
-    expect(coherced).toEqual(expect.any(String)); // ~ toBe('50');
-    expect(+coherced).toEqual(expect.any(Number)); // ~ toBe(50);
+    expect(coerced).toEqual(expect.any(String)); // ~ toBe('50');
+    expect(+coerced).toEqual(expect.any(Number)); // ~ toBe(50);
   });
 });
 
