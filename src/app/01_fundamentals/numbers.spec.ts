@@ -1,6 +1,6 @@
 import { integer, float, coherced, text } from './numbers';
 
-describe('JEST can...', () => {
+xdescribe('JEST can assert Numbers', () => {
   it('assert Integers', () => {
     expect(integer).not.toBeNaN; // ~ toEqual(expect.any(Number));
     expect<boolean>(Number.isInteger(integer)).toBe(true);
