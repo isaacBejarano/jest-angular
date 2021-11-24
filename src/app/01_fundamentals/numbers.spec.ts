@@ -12,13 +12,13 @@ xdescribe('JEST can assert Numbers', () => {
   });
 
   it('assert coherced Numbers', () => {
-    expect(coerced).toEqual(expect.any(String)); // ~ toBe('50');
-    expect(+coerced).toEqual(expect.any(Number)); // ~ toBe(50);
+    expect<string>(coerced).toEqual(expect.any(String)); // ~ toBe('50');
+    expect<number>(+coerced).toEqual(expect.any(Number)); // ~ toBe(50);
   });
 });
 
 xdescribe('JEST can assert NaN', () => {
   it('assert NaN', () => {
-    expect(text).toBeNaN; // ~ .not.toEqual(expect.any(Number))
+    expect<string>(text).toBeNaN; // ~ .not.toEqual(expect.any(Number))
   });
 });
