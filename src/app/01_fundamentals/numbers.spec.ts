@@ -11,7 +11,7 @@ xdescribe('JEST can assert Numbers', () => {
     expect<boolean>(Number.isInteger(float)).toBe(false);
   });
 
-  it('assert coherced Numbers', () => {
+  it('assert coerced Numbers', () => {
     expect<string>(coerced).toEqual(expect.any(String)); // ~ toBe('50');
     expect<number>(+coerced).toEqual(expect.any(Number)); // ~ toBe(50);
   });

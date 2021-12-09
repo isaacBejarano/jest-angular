@@ -10,7 +10,8 @@ xdescribe('JEST can assert Function Signatures', () => {
   });
 
   it('n++... if Arg is >= 0', () => {
-    expect(compute(0)).toBe(1);
-    expect(compute(1)).toBe(2);
+    let n = 1;
+
+    expect(compute(n)).toBe((n += 1));
   });
 });
