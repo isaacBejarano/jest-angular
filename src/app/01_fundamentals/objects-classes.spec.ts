@@ -16,4 +16,24 @@ xdescribe('JEST can assert Objects and Classes', () => {
   it('assert Object type', () => {
     expect(dog).toEqual(expect.any(Object)); // ~.objectContaining({}))
   });
+
+  // REFs
+  it('assert Object references', () => {
+    const player1 = { name: 'John', age: 25 };
+    const player2 = { name: 'John', age: 25 };
+
+    // Intention of testing reference not ovbious
+    expect(player1).toBe(player1); // passes
+    expect(player1).not.toBe(player2); // passes
+    expect(player1).toEqual(player1); // passes
+    // expect(player1).not.toEqual(player2); // fails
+
+    // SOLUTION: use toEqual
+    expect(player1 === player1).toEqual(true);
+    expect(player1 === player2).toEqual(false);
+  });
 });
+
+// Use toBe() only with literals (numbers, strings. {}). But in hat scenario toEqual() is equivalent.
+// So GOOD PRACTICE => never use toBe().... use toEqual() instead.
+// The only case where we really need toBe() is to test REFs... but we can workaround it and gain more readability

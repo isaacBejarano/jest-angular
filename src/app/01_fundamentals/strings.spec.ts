@@ -3,7 +3,8 @@ const str = 'Hola' + ' Mundo';
 xdescribe('JEST can assert Strings', () => {
   // whole strings
   it('String matches', () => {
-    expect(str).toMatch('Hola Mundo');
+    expect(str).toEqual('Hola Mundo'); // strictly
+    expect(str).toMatch('Hola'); // ~toContain
   });
 
   // substrings
