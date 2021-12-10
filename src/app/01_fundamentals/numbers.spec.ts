@@ -11,6 +11,13 @@ xdescribe('JEST can assert Numbers', () => {
     expect<boolean>(Number.isInteger(float)).toBe(false);
   });
 
+  it('use toBeCloseTo() to avoid bugs when adding Floats', () => {
+    const addedFloats = 0.157 + 0.253;
+    // expect<number>(addedFloats).toBe(0.41); // prone to errors --> Expected: 0.41 / Received: 0.41000000000000003
+    // expect<number>(addedFloats).toEqual(0.41); // prone to errors --> Expected: 0.41 / Received: 0.41000000000000003
+    expect<number>(addedFloats).toBeCloseTo(0.41);
+  });
+
   it('assert coerced Numbers', () => {
     expect<string>(coerced).toEqual(expect.any(String)); // ~ toBe('50');
     expect<number>(+coerced).toEqual(expect.any(Number)); // ~ toBe(50);
