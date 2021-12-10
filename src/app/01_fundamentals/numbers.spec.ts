@@ -1,6 +1,6 @@
 import { integer, float, coerced, text } from './numbers';
 
-xdescribe('JEST can assert Numbers', () => {
+describe('JEST can assert Numbers', () => {
   it('assert Integers', () => {
     expect(integer).not.toBeNaN; // ~ toEqual(expect.any(Number));
     expect<boolean>(Number.isInteger(integer)).toBe(true);
@@ -9,6 +9,13 @@ xdescribe('JEST can assert Numbers', () => {
   it('assert Floats', () => {
     expect(float).not.toBeNaN; // ~ toEqual(expect.any(Number));
     expect<boolean>(Number.isInteger(float)).toBe(false);
+  });
+
+  it('use toBeCloseTo() to avoid bugs when adding Floats', () => {
+    const addedFloats = 0.157 + 0.253;
+    // expect<number>(addedFloats).toBe(0.41); // prone to errors --> Expected: 0.41 / Received: 0.41000000000000003
+    // expect<number>(addedFloats).toEqual(0.41); // prone to errors --> Expected: 0.41 / Received: 0.41000000000000003
+    expect<number>(addedFloats).toBeCloseTo(0.41);
   });
 
   it('assert coerced Numbers', () => {
