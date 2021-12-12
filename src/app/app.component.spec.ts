@@ -1,34 +1,51 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
 import { AppComponent } from './app.component';
 
-let fixture: any, app: AppComponent, DOM: HTMLElement;
+let fixture: ComponentFixture<AppComponent>,
+  app: AppComponent,
+  DOM: HTMLElement;
+
+beforeEach(async () => {
+  // compile Component
+
+  await TestBed.configureTestingModule({
+    imports: [],
+    declarations: [AppComponent],
+  }).compileComponents();
+
+  // create Instance
+
+  fixture = TestBed.createComponent(AppComponent); // simulate Class
+  app = fixture.componentInstance; // AppComponent TS
+  DOM = fixture.nativeElement; // AppComponent HTML
+});
 
 xdescribe('class AppComponent{}', () => {
-  beforeEach(async () => {
-    // compile Component
-    await TestBed.configureTestingModule({
-      imports: [],
-      declarations: [AppComponent],
-    }).compileComponents();
-
-    // create Instance
-    fixture = TestBed.createComponent(AppComponent); // simulate Class
-    app = fixture.componentInstance; // AppComponent TS
-    DOM = fixture.nativeElement; // AppComponent HTML
-
-    // afterViewInit()
-    fixture.detectChanges();
-  });
+  // 1. instance
 
   it('Should create the app', () => {
     expect(app).toBeTruthy();
   });
 
-  fit(`App have as title 'JEST running on Angular'`, () => {
+  it(`'title' assigned before ChangeDetection`, () => {
+    app.ngOnInit(); // <-- hooks
+
+    expect(app.title).toContain('JEST');
+  });
+
+  it(`does not mutate 'title' after OnInit()`, () => {
+    app.ngOnInit(); // <-- hooks
+
     expect(app.title).toEqual('JEST running on Angular');
   });
 
+  // 2. DOM
+
   it('HTML renders title', () => {
+    fixture.detectChanges();
+    // changeDetectionStrategy doesn't matter but is only testable when View ready
+
     expect(DOM.querySelector('.content span')?.textContent).toContain(
       'JEST running on Angular, fuck yeah!'
     );
