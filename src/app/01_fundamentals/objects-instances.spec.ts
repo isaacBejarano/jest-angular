@@ -1,4 +1,4 @@
-import { Dog, dog } from './objects-classes';
+import { Dog, dog } from './objects-instances';
 
 xdescribe('JEST can assert Objects and Classes', () => {
   // Classes
