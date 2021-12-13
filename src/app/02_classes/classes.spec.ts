@@ -29,6 +29,8 @@ let magpie: Bird, crow: Bird;
 beforeAll(() => {
   magpie = new Bird();
   crow = new Bird();
+
+  // actions
   magpie.setName = 'Magie';
   crow.setName = 'Fiddle';
 });
