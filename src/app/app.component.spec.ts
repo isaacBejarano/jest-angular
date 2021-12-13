@@ -16,9 +16,9 @@ beforeEach(async () => {
 
   // create Instance
 
-  fixture = TestBed.createComponent(AppComponent); // simulate Class
-  app = fixture.componentInstance; // AppComponent TS
-  DOM = fixture.nativeElement; // AppComponent HTML
+  fixture = TestBed.createComponent(AppComponent); // test ready
+  app = fixture.componentInstance; // instance
+  DOM = fixture.nativeElement; // DOM
 });
 
 xdescribe('class AppComponent{}', () => {

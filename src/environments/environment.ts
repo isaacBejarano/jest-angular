@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  // https://www.mediawiki.org/wiki/API:Main_page
+  wiki: {
+    api: 'https://en.wikipedia.org/w/api.php',
+  },
 };
 
 /*
