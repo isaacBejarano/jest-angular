@@ -6,7 +6,7 @@
 
 Search Result...
 <ul>
-  <li *ngFor="let wiki of wikies | async">
+  <li *ngFor="let wiki of wikies$ | async">
     {{ wiki.title }}
   </li>
 </ul>

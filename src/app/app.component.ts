@@ -12,13 +12,11 @@ import { i_WikiArticle } from './interfaces/wiki.interface';
 })
 export class AppComponent implements OnInit {
   title = 'JEST running on Angular';
-  wikies!: Observable<i_WikiArticle[]>;
+  wikies$!: Observable<i_WikiArticle[]>;
 
   constructor(private readonly Wiki: WikiService) {}
 
   ngOnInit(): void {
-    this.wikies = this.Wiki.search('angular material');
-
-    this.wikies.pipe(tap(console.dir)).subscribe((o) => o);
+    this.wikies$ = this.Wiki.search('angular material').pipe(tap(console.dir));
   }
 }

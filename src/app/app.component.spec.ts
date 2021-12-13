@@ -1,4 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { WikiService } from './04_services/services/wiki.service';
 
 import { AppComponent } from './app.component';
 
@@ -10,7 +12,8 @@ beforeEach(async () => {
   // compile Component
 
   await TestBed.configureTestingModule({
-    imports: [],
+    imports: [HttpClientModule],
+    providers: [{ provide: WikiService }],
     declarations: [AppComponent],
   }).compileComponents();
 

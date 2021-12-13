@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable, pluck } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { Observable, pluck } from 'rxjs';
 
 import { i_Wiki, i_WikiArticle } from 'src/app/interfaces/wiki.interface';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class WikiService {
-  constructor(private HXR: HttpClient) {}
+  constructor(private XHR: HttpClient) {}
 
   search(term: string): Observable<i_WikiArticle[]> {
     const params = {
@@ -22,7 +22,7 @@ export class WikiService {
       origin: '*', // <- vs. CORS!
     };
 
-    return this.HXR.get<i_Wiki>(environment.wiki.api, { params }).pipe(
+    return this.XHR.get<i_Wiki>(environment.wiki.api, { params }).pipe(
       pluck('query', 'search') // ~ map((o: any) => o.query.search)
     );
   }
