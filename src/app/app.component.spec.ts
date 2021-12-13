@@ -1,4 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { WikiService } from './04_services/services/wiki.service';
 
 import { AppComponent } from './app.component';
 
@@ -10,15 +12,16 @@ beforeEach(async () => {
   // compile Component
 
   await TestBed.configureTestingModule({
-    imports: [],
+    imports: [HttpClientModule],
+    providers: [{ provide: WikiService }],
     declarations: [AppComponent],
   }).compileComponents();
 
   // create Instance
 
-  fixture = TestBed.createComponent(AppComponent); // simulate Class
-  app = fixture.componentInstance; // AppComponent TS
-  DOM = fixture.nativeElement; // AppComponent HTML
+  fixture = TestBed.createComponent(AppComponent); // test ready
+  app = fixture.componentInstance; // instance
+  DOM = fixture.nativeElement; // DOM
 });
 
 xdescribe('class AppComponent{}', () => {
